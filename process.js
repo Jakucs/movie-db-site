@@ -36,6 +36,18 @@ function createProfessionalObject(movie) {
 		...movie.directors
 	]; //így nem tömböket adnánk hozzá */
 
+/* 	if(movie.writers){
+		roles.push("writer")
+	}
+	if(movie.actors){
+		roles.push("actor")
+	}
+	if(movie.directors){
+		roles.push("director")
+	}
+
+	professionalObject.roles.push(roles) */
+
 	console.log(roles)
 		for (const role of roles) {
 			professionalObject.name = getName(role);
