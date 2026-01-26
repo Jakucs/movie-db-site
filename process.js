@@ -27,12 +27,16 @@ function createProfessionalObject(movie) {
 	   roles: []
 	}
 
-	const roles = [];
+	let roles = [];
 
 	roles.push(movie.writers, movie.actors, movie.directors);
-	//console.log(roles)
-	//roles = [...movie.writers, ...movie.actors, ...movie.directors];
+/* 		roles = [
+		...movie.writers,
+		...movie.actors,
+		...movie.directors
+	]; //így nem tömböket adnánk hozzá */
 
+	console.log(roles)
 		for (const role of roles) {
 			professionalObject.name = getName(role);
 		}
