@@ -18,7 +18,7 @@ function createProfessionalObject (names, roles) {
 	
 
 	//console.log(writersArray)
-	console.log(professionalObject)
+	//console.log(roles)
 
 	movieDB.professionals.push(professionalObject)
 }
@@ -47,7 +47,7 @@ function getAllNames(){
 		}
 		
 	}
-	console.log(names)
+	//console.log(names)
 	return names
 }
 
@@ -72,29 +72,72 @@ function makeRoles(){
 			professionals.writers.push(movie.writers)
 		}
 	}
-	let array=[];
+	let manyDirectors=[];
 	for(let i of professionals.directors){
-		if(!array.includes(i)){
-			array.push(i)
+		if(!manyDirectors.includes(i)){
+			manyDirectors.push(i)
 		}
 	}
-	professionals.directors = array
+	professionals.directors = manyDirectors
 
-	let array2=[];
+	let manyActors=[];
 		for(let i of professionals.actors){
-		if(!array2.includes(i)){
-			array2.push(i)
+		if(!manyActors.includes(i)){
+			manyActors.push(i)
 		}
 	}
-	professionals.actors = array2
+	professionals.actors = manyActors
 
-		let array3=[];
+		let manyWriters=[];
 		for(let i of professionals.writers){
-		if(!array3.includes(i)){
-			array3.push(i)
+		if(!manyWriters.includes(i)){
+			manyWriters.push(i)
 		}
 	}
-	professionals.writers = array3
+	professionals.writers = manyWriters
+
+/* 	let directorsArray=[]
+	for(let director of professionals.directors){
+		if(director.length>1){
+			for(let directors of director){
+				directorsArray.push(directors)
+			}
+		}else{
+			directorsArray.push(director)
+		}
+	}
+
+	let writersArray=[]
+	for(let writer of professionals.writers){
+		if(writer.length>1){
+			for(let writers of writer){
+				writersArray.push(writers)
+			}
+		}else{
+			writersArray.push(writer)
+		}
+	}
+
+	let actorsArray=[]
+	for(let actor of professionals.actors){
+		if(actor.length>1){
+			for(let actors of actor){
+				actorsArray.push(actors)
+			}
+		}else{
+			actorsArray.push(actor)
+		}
+	}
+	//console.log(manyDirectors)
+	//console.log(array5)
+	console.log(professionals.actors)
+
+
+	professionals.directors = directorsArray
+	professionals.writers = writersArray
+	professionals.actors = actorsArray */
+	
+	
 	return professionals
 }
 
