@@ -7,77 +7,38 @@ const movieDB = {
 }
 
 
+function createProfessionals(names){
+	for(let name of names){
 
-
-
-//Ha nincs a profession-be, hozzáadjuk új id-val
-
-function createProfessionalObject(movie) {
-	//ha i=length+1 akkor i<length nemlesz igaz
-	const idCounter = movieDB.professionals.length + 1;
-	//mert mindig létrehozunk egy új professionalObjectet
-/* 	for (let i = movieDB.professionals.length + 1; i < movieDB.professionals.length; i++) {
-		idCounter = i;
-		console.log("hello")
-	} */
-
-	const professionalObject = {
-         id: idCounter,
-       name: "",
-	   roles: []
-	}
-
-	let roles = [];
-
-	roles.push(movie.writers, movie.actors, movie.directors);
-/* 		roles = [
-		...movie.writers,
-		...movie.actors,
-		...movie.directors
-	]; //így nem tömböket adnánk hozzá */
-
-/* 	if(movie.writers){
-		roles.push("writer")
-	}
-	if(movie.actors){
-		roles.push("actor")
-	}
-	if(movie.directors){
-		roles.push("director")
-	}
-
-	professionalObject.roles.push(roles) */
-
-	console.log(roles)
-		for (const role of roles) {
-			professionalObject.name = getName(role);
-		}
-
-	return professionalObject;
-}
-
-function getName(role) {
 	
-	for (const name of role) {
-		if (isValidProfessionalObject(name)) {
-			return name;
-		}
+	let idCounter = movieDB.professionals.length+1;
+
+	let professionalObject = {
+		
+		id: idCounter,
+		name: " ",
+		roles: [ ]
 	}
+	professionalObject.id = idCounter;
+	professionalObject.name = name;
+	let names = [];
+	let roles = [
+		{type: "writer"},
+		{type: "actor"},
+		{type: "director"}
+	];
+	//addig ne pusholjuk bele amig nem jó a professionalObject
+	movieDB.professionals.push(professionalObject)
+}
+return professionalObject;
 
 }
 
-function isValidProfessionalObject(name) {
-	for (const profession of movieDB.professionals) {
-		if (profession.name === name) {
-			return false;
-		}
-	}
-	return true;
+
+for(let i of data.movies){
+	//console.log(i)
+	console.log(createProfessionals(i.actors))
 }
 
-for (const movie of data.movies) {
-	movieDB.professionals.push(createProfessionalObject(movie));
-}
-console.log(movieDB.professionals)
 
 export {movieDB};
