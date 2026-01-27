@@ -9,18 +9,37 @@ const movieDB = {
 createProfessionalObject(getAllNames(), makeRoles())
 
 function createProfessionalObject (names, roles) {
-	let idCounter = movieDB.professionals.length+1
-	let professionalObject = {
-		id: idCounter,
-		name: "",
-		roles: []
+	for(let name of names){
+		let idCounter = movieDB.professionals.length+1
+		let professionalObject = {
+			id: idCounter,
+			name: "",
+			roles: []
+		}
+
+		if(roles.writers.includes(name)){
+			professionalObject.roles.push("writer")
+		}
+		if(roles.actors.includes(name)){
+			professionalObject.roles.push("actor")
+		}
+		if(roles.directors.includes(name)){
+			professionalObject.roles.push("director")
+		}
+		professionalObject.id = idCounter;
+		professionalObject.name = name;
+
+		movieDB.professionals.push(professionalObject)
+
 	}
-	
 
 	//console.log(writersArray)
-	//console.log(roles)
+/* 	professionalObject.roles.writers = roles.writers
+	professionalObject.roles.directors = roles.directors
+	professionalObject.roles.actors = roles.actors */
 
-	movieDB.professionals.push(professionalObject)
+	console.log(movieDB.professionals)
+
 }
 
 
@@ -79,7 +98,6 @@ function makeRoles(){
 		}
 	}
 	let nestedDirectors = manyDirectors.flat()
-	//console.log(nestedDirectors)
 	professionals.directors = nestedDirectors
 
 	let manyActors=[];
@@ -89,7 +107,6 @@ function makeRoles(){
 		}
 	}
 	let nestedActors = manyActors.flat();
-	//console.log(nestedActors)
 	professionals.actors = nestedActors
 
 		let manyWriters=[];
@@ -99,7 +116,6 @@ function makeRoles(){
 		}
 	}
 	let nestedWriters = manyWriters.flat()
-	//console.log(nestedWriters)
 	professionals.writers = nestedWriters
 
 /* 	let directorsArray=[]
