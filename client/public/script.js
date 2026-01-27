@@ -10,14 +10,18 @@ const loadEvent = function() {
   const rootElement = document.getElementById("root");
   if (page == "movies") {
     let root = document.getElementById("root")
-    let ul = document.createElement("ul")
-    ul.textContent="Actors:"
+    let ulActors = document.createElement("ul")
+    let ulWriters = document.createElement("ul")
+    ulActors.textContent="Actors:"
+    ulWriters.textContent=""//.......................................
     for(let name of data.professionals){
-      let li = document.createElement("li")
-      li.textContent=name.name
-      ul.appendChild(li)
+      if(name.roles.includes("actor")){
+        let li = document.createElement("li")
+        li.textContent=name.name
+        ulActors.appendChild(li)
+      }
     }
-    root.appendChild(ul)
+    root.appendChild(ulActors)
 
   }else if(page == "actors"){
 
