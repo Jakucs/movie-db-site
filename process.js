@@ -78,7 +78,9 @@ function makeRoles(){
 			manyDirectors.push(i)
 		}
 	}
-	professionals.directors = manyDirectors
+	let nestedDirectors = manyDirectors.flat()
+	//console.log(nestedDirectors)
+	professionals.directors = nestedDirectors
 
 	let manyActors=[];
 		for(let i of professionals.actors){
@@ -86,7 +88,9 @@ function makeRoles(){
 			manyActors.push(i)
 		}
 	}
-	professionals.actors = manyActors
+	let nestedActors = manyActors.flat();
+	//console.log(nestedActors)
+	professionals.actors = nestedActors
 
 		let manyWriters=[];
 		for(let i of professionals.writers){
@@ -94,7 +98,9 @@ function makeRoles(){
 			manyWriters.push(i)
 		}
 	}
-	professionals.writers = manyWriters
+	let nestedWriters = manyWriters.flat()
+	//console.log(nestedWriters)
+	professionals.writers = nestedWriters
 
 /* 	let directorsArray=[]
 	for(let director of professionals.directors){
@@ -136,7 +142,7 @@ function makeRoles(){
 	professionals.directors = directorsArray
 	professionals.writers = writersArray
 	professionals.actors = actorsArray */
-	
+	//console.log(professionals.writers)
 	
 	return professionals
 }
