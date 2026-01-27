@@ -1,12 +1,49 @@
 import data from "./data.json" with { type: "json" };
 
 const movieDB = {
-	professionals: [], //rendező színész író külön tömbbe kerül
+	professionals: [],
 	movies: [],
   genres: []
 }
-
 createProfessionalObject(getAllNames(), makeRoles())
+
+
+function createMovieObject(){
+	//console.log(movies)
+	for(let movie of data.movies){
+		let movieObject = {
+			title: movie.title,
+			year: movie.year,
+			runtime: movie.runtime,
+			genres: movie.genres,
+			storyline: movie.storyline,
+			writers: movie.writers.map(getId),
+			directors: movie.directors.map(getId),
+			actors: movie.actors.map(getId)
+		}
+		movieDB.movies.push(movieObject)
+	}
+	console.log(movieDB.movies)
+}
+
+createMovieObject()
+
+function getId(name) {
+	const profession = movieDB.professionals.find(exactID => exactID.name === name)
+	//console.log(profession)
+	return profession.id
+}
+
+
+
+
+
+
+
+
+
+
+
 
 function createProfessionalObject (names, roles) {
 	for(let name of names){
@@ -38,7 +75,7 @@ function createProfessionalObject (names, roles) {
 	professionalObject.roles.directors = roles.directors
 	professionalObject.roles.actors = roles.actors */
 
-	console.log(movieDB.professionals)
+	//console.log(movieDB.professionals)
 
 }
 
