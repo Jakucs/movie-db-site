@@ -81,49 +81,46 @@ const loadEvent = function() {
   
   
   else if(page == "actors"){
-    let ul = document.createElement("ul")
-    let h1 = document.createElement("h1")
-    h1.textContent = "Actors: "
-    rootElement.appendChild(h1)
-        for(let professional of data.professionals){
-          if(professional.roles.includes("actor")){
-            let li = document.createElement("li")
-            li.textContent=professional.name
-            ul.appendChild(li)
-          }
-        }
-        rootElement.appendChild(ul)
+        let actors = createProfessionalList("actor")
+        rootElement.appendChild(actors)
 }
   
   else if(page == "directors"){
-    let ul = document.createElement("ul")
-    let h1 = document.createElement("h1")
-    h1.textContent = "Directors: "
-    rootElement.appendChild(h1)
-        for(let professional of data.professionals){
-          if(professional.roles.includes("director")){
-            let li = document.createElement("li")
-            li.textContent=professional.name
-            ul.appendChild(li)
-          }
-        }
-        rootElement.appendChild(ul)
+        let directors = createProfessionalList("director")
+        rootElement.appendChild(directors)
   }
   else if(page == "writers"){
+        let writers = createProfessionalList("writer")
+        rootElement.appendChild(writers)
+  }
+
+
+function createProfessionalList(profession){
     let ul = document.createElement("ul")
     let h1 = document.createElement("h1")
-    h1.textContent = "Writers: "
-    rootElement.appendChild(h1)
-        for(let professional of data.professionals){
-          if(professional.roles.includes("writer")){
-            let li = document.createElement("li")
-            li.textContent=professional.name
-            ul.appendChild(li)
-          }
-        }
-        rootElement.appendChild(ul)
-  }
-  
+    if(profession=="writer"){
+      h1.textContent = "Writers: "
+      rootElement.appendChild(h1)
+    } else if (profession=="director"){
+      h1.textContent = "Directors: "
+      rootElement.appendChild(h1)
+    } else if (profession=="actor"){
+      h1.textContent = "Actors: "
+      rootElement.appendChild(h1)
+    }
+
+    for(let professional of data.professionals){
+      if(professional.roles.includes(profession)){
+        let li = document.createElement("li")
+        li.textContent=professional.name
+        ul.appendChild(li)
+      }
+    }
+    return ul
+}
+
+
+
 
 
 }
