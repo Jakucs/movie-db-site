@@ -41,13 +41,13 @@ function showPages(){
 
 
       //Függvény meghívások
-      let actors = createContributionList("actor", movie)
+      let actors = createContributionList(movie, "actors", "Actors: ")
       div.appendChild(actors)
 
-      let directors = createContributionList("director", movie)
+      let directors = createContributionList(movie, "directors", "Directors: ")
       div.appendChild(directors)
 
-      let writers = createContributionList("writer", movie)
+      let writers = createContributionList(movie, "writers", "Writers: ")
       div.appendChild(writers)
 
       rootElement.appendChild(div);
@@ -76,22 +76,21 @@ function showPages(){
 
 
 
-function createContributionList(profession, movie){
+function createContributionList(movie, key, title){
     let div = document.createElement("div")
 
-    if(profession=="director"){
-        let profession = document.createElement("h4")
-        profession.textContent = "directors: "
-        div.appendChild(profession)
+        let professionElement = document.createElement("h4")
+        professionElement.textContent = title
+        div.appendChild(professionElement)
       for(let professional of data.professionals){
-        if(movie.directors.includes(professional.id)){
-          let directors = document.createElement("h6")
-          directors.textContent = professional.name
-          div.appendChild(directors)
+        if(movie[key].includes(professional.id)){
+          let name = document.createElement("h6")
+          name.textContent = professional.name
+          div.appendChild(name)
         }
       }
-    }
-    else if(profession=="actor"){
+    
+/*     else if(profession=="actor"){
         let profession = document.createElement("h4")
         profession.textContent = "actors: "
         div.appendChild(profession)
@@ -115,7 +114,7 @@ function createContributionList(profession, movie){
           div.appendChild(writers)
         }
       }
-    }
+    } */
       return div
   }
 
