@@ -93,7 +93,7 @@ function createContributionList(movie, key, title){
   }
 
 function createProfessionalList(profession, job){
-    let ul = document.createElement("ul")
+    let div = document.createElement("div")
     let h1 = document.createElement("h1")
     
       h1.textContent = job
@@ -101,12 +101,25 @@ function createProfessionalList(profession, job){
     
     for(let professional of data.professionals){
       if(professional.roles.includes(profession)){
-        let li = document.createElement("li")
-        li.textContent=professional.name
-        ul.appendChild(li)
+
+        let h5 = document.createElement("h5")
+        h5.textContent=professional.name+":"
+        div.appendChild(h5)
+
+        //listFilms(professional)
+        
+        for(let movie of data.movies){
+          if(movie.actors.includes(professional.id)){
+            //console.log("movie title: ", movie.title)
+            let p = document.createElement("p")
+            p.textContent=movie.title
+            div.appendChild(p)
+          }
+        }
+
       }
     }
-    return ul
+    return div
 }
 
 
