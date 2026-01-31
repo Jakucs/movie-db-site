@@ -12,32 +12,55 @@ const loadEvent = function() {
 
 showPages()
 
+function showMovieByID(id){
+  for(let movie of data.movies){
+    if(movie.id == id){
+      
+      rootElement.appendChild(showMovie(movie))
+    }
+  }
+}
+
+function showMovie(movie){
+    let div = document.createElement("div")
+
+    const title = document.createElement("h2")
+    title.textContent=movie.title
+    div.appendChild(title)
+    
+    const year = document.createElement("h5")
+    year.textContent= "release - date: " + movie.year
+    div.appendChild(year)
+    
+    const runtime = document.createElement("h5")
+    runtime.textContent= "runtime: " + movie.runtime
+    div.appendChild(runtime)
+    
+    const genres = document.createElement("h5")
+    genres.textContent= "Genres: " + movie.genres.join(", ");
+    div.appendChild(genres)
+    
+    const storyline = document.createElement("h6")
+    storyline.textContent= "storyline: " + movie.storyline;
+    div.appendChild(storyline)
+    
+    return div
+}
 
 
 function showPages(){
+
+    if(page.startsWith("movie/")){
+      const movieID = parseInt(page.split("/")[1]);
+      showMovieByID(movieID)
+      return;
+    }
+  
     if (page == "movies") {
     for(let movie of data.movies){
       let div = document.createElement("div")
 
-      const title = document.createElement("h2")
-      title.textContent=movie.title
-      div.appendChild(title)
-      
-      const year = document.createElement("h5")
-      year.textContent= "release - date: " + movie.year
-      div.appendChild(year)
-      
-      const runtime = document.createElement("h5")
-      runtime.textContent= "runtime: " + movie.runtime
-      div.appendChild(runtime)
-      
-      const genres = document.createElement("h5")
-      genres.textContent= "Genres: " + movie.genres.join(", ");
-      div.appendChild(genres)
-      
-      const storyline = document.createElement("h6")
-      storyline.textContent= "storyline: " + movie.storyline;
-      div.appendChild(storyline)
+      div.appendChild(showMovie(movie))
 
 
       //Függvény meghívások
@@ -73,6 +96,7 @@ function showPages(){
         let genres = createGenreListWithMovie()
         rootElement.appendChild(genres)
   }
+  
 }
 
 
