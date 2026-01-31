@@ -109,7 +109,8 @@ function createProfessionalList(profession, job){
         //listFilms(professional)
         
         //EBBŐL 3AT CSINÁLNI
-        if(professional.roles=="actor"){
+        div.appendChild(filmsBelongingToAProfessional("actors", professional))
+/*         if(professional.roles=="actor"){
           for(let movie of data.movies){
             if(movie.actors.includes(professional.id)){
                   console.log(movie.title)
@@ -118,10 +119,11 @@ function createProfessionalList(profession, job){
                   div.appendChild(p)
             }
           }
-        }
+        } */
 
+        div.appendChild(filmsBelongingToAProfessional("writers", professional))
 
-        if(professional.roles=="writer"){
+        /* if(professional.roles=="writer"){
           for(let movie of data.movies){
             if(movie.writers.includes(professional.id)){
                   console.log(movie.title)
@@ -130,9 +132,11 @@ function createProfessionalList(profession, job){
                   div.appendChild(p)
             }
           }
-        }
+        } */
 
-        if(professional.roles=="director"){
+          div.appendChild(filmsBelongingToAProfessional("directors", professional))
+
+/*         if(professional.roles=="director"){
           for(let movie of data.movies){
             if(movie.directors.includes(professional.id)){
                   console.log(movie.title)
@@ -141,14 +145,26 @@ function createProfessionalList(profession, job){
                   div.appendChild(p)
             }
           }
-        }
-
-
+        } */
       }
     }
-
     return div
 }
+
+
+
+        function filmsBelongingToAProfessional(profession, professional){
+          let div = document.createElement("div")
+            for(let movie of data.movies){
+              if(movie[profession].includes(professional.id)){
+                    console.log(movie.title)
+                    let p = document.createElement("p")
+                    p.textContent=movie.title
+                    div.appendChild(p)
+              }
+            }
+            return div
+        }
 
 
 
