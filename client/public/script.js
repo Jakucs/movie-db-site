@@ -71,24 +71,24 @@ function showPages(){
         rootElement.appendChild(writers)
   }
   else if(page == "genres"){
-        let div = document.createElement("div")
-        let h2 = document.createElement("h2")
-        h2.textContent="Genres: "
-        div.appendChild(h2)
-
-        for(let genre of data.genres){
-          let p = document.createElement("p")
-          p.textContent = genre.name
-          div.appendChild(p)
-        }
-
-        rootElement.appendChild(div)
+        let genres = createGenreList()
+        rootElement.appendChild(genres)
   }
 }
 
 
 function createGenreList(){
+    let div = document.createElement("div")
+    let h2 = document.createElement("h2")
+    h2.textContent="Genres: "
+    div.appendChild(h2)
 
+    for(let genre of data.genres){
+      let p = document.createElement("p")
+      p.textContent = genre.name
+      div.appendChild(p)
+    }
+    return div
 }
 
 
