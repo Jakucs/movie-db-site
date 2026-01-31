@@ -69,6 +69,10 @@ function showPages(){
         let writers = createProfessionalList("writer", "Writers: ")
         rootElement.appendChild(writers)
   }
+  else if(page == "genres"){
+        let writers = createProfessionalList("writer", "Writers: ")
+        rootElement.appendChild(writers)
+  }
 }
 
 
@@ -122,7 +126,7 @@ function createProfessionalList(profession, job){
           let div = document.createElement("div")
             for(let movie of data.movies){
               if(movie[profession].includes(professional.id)){
-                    console.log(movie.title)
+                    //console.log(movie.title)
                     let p = document.createElement("p")
                     p.textContent=movie.title
                     div.appendChild(p)

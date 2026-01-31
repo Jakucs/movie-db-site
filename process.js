@@ -8,6 +8,30 @@ const movieDB = {
 createProfessionalObject(getAllNames(), makeRoles())
 
 
+function createGenreObject(){
+	let genres = [];
+	for(let movie of data.movies){
+		movie.genres.forEach(genre => {
+			if (!genres.includes(genre)){
+				genres.push(genre)
+			}
+		});
+	}
+	
+	for(let genre of genres){
+		let genreID = movieDB.genres.length + 1;
+		let genreObject = {
+			id: genreID,
+			name: genre
+		}
+		movieDB.genres.push(genreObject)
+	}
+	console.log(movieDB.genres)
+}
+
+createGenreObject()
+
+
 function createMovieObject(){
 	//console.log(movies)
 	for(let movie of data.movies){
@@ -28,24 +52,8 @@ function createMovieObject(){
 
 createMovieObject()
 
-function getId(name) {
-	const profession = movieDB.professionals.find(exactID => exactID.name === name)
-	//console.log(profession)
-	return profession.id
-}
 
-
-
-
-
-
-
-
-
-
-
-
-function createProfessionalObject (names, roles) {
+function createProfessionalObject(names, roles) {
 	for(let name of names){
 		let idCounter = movieDB.professionals.length+1
 		let professionalObject = {
@@ -53,7 +61,7 @@ function createProfessionalObject (names, roles) {
 			name: "",
 			roles: []
 		}
-
+		
 		if(roles.writers.includes(name)){
 			professionalObject.roles.push("writer")
 		}
@@ -65,18 +73,23 @@ function createProfessionalObject (names, roles) {
 		}
 		professionalObject.id = idCounter;
 		professionalObject.name = name;
-
+		
 		movieDB.professionals.push(professionalObject)
-
+		
 	}
-
+	
 	//console.log(writersArray)
-/* 	professionalObject.roles.writers = roles.writers
+	/* 	professionalObject.roles.writers = roles.writers
 	professionalObject.roles.directors = roles.directors
 	professionalObject.roles.actors = roles.actors */
-
+	
 	//console.log(movieDB.professionals)
-
+	
+}
+function getId(name) {
+	const profession = movieDB.professionals.find(exactID => exactID.name === name)
+	//console.log(profession)
+	return profession.id
 }
 
 
