@@ -108,17 +108,45 @@ function createProfessionalList(profession, job){
 
         //listFilms(professional)
         
-        for(let movie of data.movies){
-          if(movie.actors.includes(professional.id)){
-            //console.log("movie title: ", movie.title)
-            let p = document.createElement("p")
-            p.textContent=movie.title
-            div.appendChild(p)
+        //EBBŐL 3AT CSINÁLNI
+        if(professional.roles=="actor"){
+          for(let movie of data.movies){
+            if(movie.actors.includes(professional.id)){
+                  console.log(movie.title)
+                  let p = document.createElement("p")
+                  p.textContent=movie.title
+                  div.appendChild(p)
+            }
           }
         }
 
+
+        if(professional.roles=="writer"){
+          for(let movie of data.movies){
+            if(movie.writers.includes(professional.id)){
+                  console.log(movie.title)
+                  let p = document.createElement("p")
+                  p.textContent=movie.title
+                  div.appendChild(p)
+            }
+          }
+        }
+
+        if(professional.roles=="director"){
+          for(let movie of data.movies){
+            if(movie.directors.includes(professional.id)){
+                  console.log(movie.title)
+                  let p = document.createElement("p")
+                  p.textContent=movie.title
+                  div.appendChild(p)
+            }
+          }
+        }
+
+
       }
     }
+
     return div
 }
 
