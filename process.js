@@ -26,7 +26,7 @@ function createGenreObject(){
 		}
 		movieDB.genres.push(genreObject)
 	}
-	console.log(movieDB.genres)
+	//console.log(movieDB.genres)
 }
 
 createGenreObject()
@@ -35,7 +35,9 @@ createGenreObject()
 function createMovieObject(){
 	//console.log(movies)
 	for(let movie of data.movies){
+		let movieID = movieDB.movies.length + 1;
 		let movieObject = {
+			id: movieID,
 			title: movie.title,
 			year: movie.year,
 			runtime: movie.runtime,

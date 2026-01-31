@@ -1,4 +1,3 @@
-//import { movieDB } from '../../process';
 import { data } from '/data.js';
 
 const loadEvent = function() {
@@ -88,21 +87,15 @@ function createGenreListWithMovie(){
       ul.textContent = genre.name+":"
 
     for(let movie of data.movies){
-      
         if(movie.genres.includes(genre.name)){
           //console.log(movie)
           let li = document.createElement("li")
           li.textContent=movie.title
           ul.appendChild(li)
         }
-      
     }
-
       div.appendChild(ul)
     }
-
-
-
     return div
 }
 
