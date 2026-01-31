@@ -106,46 +106,11 @@ function createProfessionalList(profession, job){
         h5.textContent=professional.name+":"
         div.appendChild(h5)
 
-        //listFilms(professional)
-        
-        //EBBŐL 3AT CSINÁLNI
-        div.appendChild(filmsBelongingToAProfessional("actors", professional))
-/*         if(professional.roles=="actor"){
-          for(let movie of data.movies){
-            if(movie.actors.includes(professional.id)){
-                  console.log(movie.title)
-                  let p = document.createElement("p")
-                  p.textContent=movie.title
-                  div.appendChild(p)
-            }
-          }
-        } */
 
-        div.appendChild(filmsBelongingToAProfessional("writers", professional))
+        div.appendChild(filmsBelongingToAProfessional(profession+"s", professional))
+        // div.appendChild(filmsBelongingToAProfessional("writers", professional))
+        // div.appendChild(filmsBelongingToAProfessional("directors", professional))
 
-        /* if(professional.roles=="writer"){
-          for(let movie of data.movies){
-            if(movie.writers.includes(professional.id)){
-                  console.log(movie.title)
-                  let p = document.createElement("p")
-                  p.textContent=movie.title
-                  div.appendChild(p)
-            }
-          }
-        } */
-
-          div.appendChild(filmsBelongingToAProfessional("directors", professional))
-
-/*         if(professional.roles=="director"){
-          for(let movie of data.movies){
-            if(movie.directors.includes(professional.id)){
-                  console.log(movie.title)
-                  let p = document.createElement("p")
-                  p.textContent=movie.title
-                  div.appendChild(p)
-            }
-          }
-        } */
       }
     }
     return div
