@@ -1,3 +1,4 @@
+//import { movieDB } from '../../process';
 import { data } from '/data.js';
 
 const loadEvent = function() {
@@ -70,13 +71,25 @@ function showPages(){
         rootElement.appendChild(writers)
   }
   else if(page == "genres"){
-        let writers = createProfessionalList("writer", "Writers: ")
-        rootElement.appendChild(writers)
+        let div = document.createElement("div")
+        let h2 = document.createElement("h2")
+        h2.textContent="Genres: "
+        div.appendChild(h2)
+
+        for(let genre of data.genres){
+          let p = document.createElement("p")
+          p.textContent = genre.name
+          div.appendChild(p)
+        }
+
+        rootElement.appendChild(div)
   }
 }
 
 
+function createGenreList(){
 
+}
 
 
 

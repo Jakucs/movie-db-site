@@ -47,7 +47,7 @@ function createMovieObject(){
 		}
 		movieDB.movies.push(movieObject)
 	}
-	console.log(movieDB.movies)
+	//console.log(movieDB.movies)
 }
 
 createMovieObject()
